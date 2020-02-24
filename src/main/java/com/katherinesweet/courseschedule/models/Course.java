@@ -1,16 +1,25 @@
 package com.katherinesweet.courseschedule.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Course extends AbstractEntity {
 
     private int enrollmentCapacity = 100;
     private int enrollmentActual = 0;
-    private Person instructor;
-    private Person teachingAssistant = null;
+
+    @ManyToOne
+    private Teacher teacher;
+
+    @OneToMany
+    private List<Teacher> teachingAssistant = new ArrayList<>();
     private String locationOnCampus;
     private ArrayList<Day> daysInClass;
     private int startTime;
@@ -24,9 +33,10 @@ public class Course extends AbstractEntity {
 
     public Course() {}
 
-    public Course(String name, Person instructor, String locationOnCampus, ArrayList<Day> daysInClass, int startTime, int endTime, int courseNumber, String courseDepartment) {
+    public Course(String name, Teacher teacher, String locationOnCampus, ArrayList<Day> daysInClass, int startTime, int endTime, int courseNumber, String courseDepartment) {
+        super();
         this.setName(name);
-        this.instructor = instructor;
+        this.teacher = teacher;
         this.locationOnCampus = locationOnCampus;
         this.daysInClass = daysInClass;
         this.startTime = startTime;
@@ -36,7 +46,7 @@ public class Course extends AbstractEntity {
         this.classTimeLength = startTime - endTime;
     }
 
-    public Course(int enrollmentCapacity, int enrollmentActual, Person instructor, Person teachingAssistant, String locationOnCampus, ArrayList<Day> daysInClass, int startTime, int endTime, int courseNumber, String courseDepartment, String prerequisites, int classTimeLength, Boolean isGraduateLevel) {
+    public Course(int enrollmentCapacity, int enrollmentActual, Teacher teacher, ArrayList<Teacher> teachingAssistant, String locationOnCampus, ArrayList<Day> daysInClass, int startTime, int endTime, int courseNumber, String courseDepartment, String prerequisites, int classTimeLength, Boolean isGraduateLevel) {
         this();
         this.enrollmentCapacity = enrollmentCapacity;
         this.enrollmentActual = enrollmentActual;
@@ -62,19 +72,19 @@ public class Course extends AbstractEntity {
         this.enrollmentActual = enrollmentActual;
     }
 
-    public Person getInstructor() {
-        return instructor;
+    public Teacher getInstructor() {
+        return teacher;
     }
 
-    public void setInstructor(Person instructor) {
-        this.instructor = instructor;
+    public void setInstructor(Teacher teacher) {
+        this.teacher = teacher;
     }
 
-    public Person getTeachingAssistant() {
+    public List<Teacher> getTeachingAssistant() {
         return teachingAssistant;
     }
 
-    public void setTeachingAssistant(Person teachingAssistant) {
+    public void setTeachingAssistant(ArrayList<Teacher> teachingAssistant) {
         this.teachingAssistant = teachingAssistant;
     }
 

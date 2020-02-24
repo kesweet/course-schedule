@@ -1,34 +1,43 @@
 package com.katherinesweet.courseschedule.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.ArrayList;
+import java.util.List;
 
-@Entity
-public class FacultyMember extends Person {
+
+public class FacultyMember extends Teacher {
 
     private Boolean canTeachGradLevel;
     private FacultyType facultyType;
-    private DepartmentJob departmentJob;
-    private ArrayList<GraduateStudent> teachingAssistants;
+
+    @OneToMany
+    @JoinColumn
+    private List<GraduateStudent> teachingAssistants = new ArrayList<>();
+
+    @OneToOne
     private GraduateStudent researchAssistant = null;
     private int hierarchicalStatus;
-    private ArrayList<Course> coursesTeaching;
     private Boolean isOnSabbatical = false;
     private Boolean isDepartmentChair = false;
-    private String otherDepartmentRoles;
+
 
     public FacultyMember() {}
 
 
-    public FacultyMember(Boolean canTeachGradLevel, FacultyType facultyType, DepartmentJob departmentJob, ArrayList<GraduateStudent> teachingAssistants, ArrayList<Course> coursesTeaching, int yearsInDepartment) {
+    public FacultyMember(String name, Boolean canTeachGradLevel, FacultyType facultyType, DepartmentJob departmentJob, ArrayList<GraduateStudent> teachingAssistants, ArrayList<Course> coursesTeaching, int yearsInDepartment) {
+        super();
+        this.setName(name);
         this.canTeachGradLevel = canTeachGradLevel;
         this.facultyType = facultyType;
-        this.departmentJob = departmentJob;
+        this.setDepartmentJob(departmentJob);
         this.teachingAssistants = teachingAssistants;
-        this.coursesTeaching = coursesTeaching;
+        this.setCoursesTeaching(coursesTeaching);
         this.setYearsInDepartment(yearsInDepartment);
         this.hierarchicalStatus = 0;
-        this.otherDepartmentRoles = "None";
+        this.setOtherDepartmentRoles("None");
     }
 
     public FacultyMember(Boolean canTeachGradLevel, FacultyType facultyType, DepartmentJob departmentJob, ArrayList<GraduateStudent> teachingAssistant, GraduateStudent researchAssistant, int hierarchicalStatus, ArrayList<Course> coursesTeaching, Boolean isOnSabbatical, Boolean isDepartmentChair, int yearsInDepartment, String otherDepartmentRoles) {
@@ -37,7 +46,8 @@ public class FacultyMember extends Person {
         this.hierarchicalStatus = hierarchicalStatus;
         this.isOnSabbatical = isOnSabbatical;
         this.isDepartmentChair = isDepartmentChair;
-        this.otherDepartmentRoles = otherDepartmentRoles;
+        this.setOtherDepartmentRoles(otherDepartmentRoles);
+        this.setYearsInDepartment(yearsInDepartment);
     }
 
     public Boolean getCanTeachGradLevel() {
@@ -56,15 +66,8 @@ public class FacultyMember extends Person {
         this.facultyType = facultyType;
     }
 
-    public DepartmentJob getDepartmentJob() {
-        return departmentJob;
-    }
 
-    public void setDepartmentJob(DepartmentJob departmentJob) {
-        this.departmentJob = departmentJob;
-    }
-
-    public ArrayList<GraduateStudent> getTeachingAssistants() {
+    public List<GraduateStudent> getTeachingAssistants() {
         return teachingAssistants;
     }
 
@@ -88,14 +91,6 @@ public class FacultyMember extends Person {
         this.hierarchicalStatus = hierarchicalStatus;
     }
 
-    public ArrayList<Course> getCoursesTeaching() {
-        return coursesTeaching;
-    }
-
-    public void setCoursesTeaching(ArrayList<Course> coursesTeaching) {
-        this.coursesTeaching = coursesTeaching;
-    }
-
     public Boolean getOnSabbatical() {
         return isOnSabbatical;
     }
@@ -113,11 +108,4 @@ public class FacultyMember extends Person {
     }
 
 
-    public String getOtherDepartmentRoles() {
-        return otherDepartmentRoles;
-    }
-
-    public void setOtherDepartmentRoles(String otherDepartmentRoles) {
-        this.otherDepartmentRoles = otherDepartmentRoles;
-    }
 }

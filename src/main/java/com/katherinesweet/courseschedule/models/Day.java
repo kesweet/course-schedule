@@ -15,7 +15,7 @@ public enum Day {
     private final String displayName;
     private final boolean weekday;
 
-    public Day(String displayName, boolean weekday) {
+    Day(String displayName, boolean weekday) {
         this.displayName = displayName;
         this.weekday = weekday;
     }
