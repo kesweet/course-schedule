@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 
-public class Calendar {
+public class Calendar extends AbstractEntity {
 
-    private static ArrayList<Day> daysOfTheWeek;
+    private ArrayList<Day> daysOfTheWeek;
 
-    private static ArrayList<Integer> timesOfTheDay;
+    private ArrayList<Integer> timesOfTheDay;
 
     public ArrayList<Integer> buildTimeSlots(int startTime, int endTime) {
 
