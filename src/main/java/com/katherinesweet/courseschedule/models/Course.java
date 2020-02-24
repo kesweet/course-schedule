@@ -1,7 +1,6 @@
 package com.katherinesweet.courseschedule.models;
 
 import javax.persistence.Entity;
-import com.katherinesweet.courseschedule.models.Person;
 
 import java.util.ArrayList;
 
@@ -20,12 +19,12 @@ public class Course extends AbstractEntity {
     private String courseDepartment;
     private String prerequisites = null;
     private int classTimeLength;
-    private Boolean graduateCourse = false;
+    private Boolean isGraduateLevel = false;
 
 
     public Course() {}
 
-    public Course(String name, Person instructor, String locationOnCampus, ArrayList<Day> daysInClass, int startTime, int endTime, int courseNumber, String courseDepartment, int classTimeLength) {
+    public Course(String name, Person instructor, String locationOnCampus, ArrayList<Day> daysInClass, int startTime, int endTime, int courseNumber, String courseDepartment) {
         this.setName(name);
         this.instructor = instructor;
         this.locationOnCampus = locationOnCampus;
@@ -34,15 +33,15 @@ public class Course extends AbstractEntity {
         this.endTime = endTime;
         this.courseNumber = courseNumber;
         this.courseDepartment = courseDepartment;
-        this.classTimeLength = classTimeLength;
+        this.classTimeLength = startTime - endTime;
     }
 
-    public Course(int enrollmentCapacity, int enrollmentActual, Person instructor, Person teachingAssistant, String locationOnCampus, ArrayList<Day> daysInClass, int startTime, int endTime, int courseNumber, String courseDepartment, String prerequisites, int classTimeLength, Boolean graduateCourse) {
+    public Course(int enrollmentCapacity, int enrollmentActual, Person instructor, Person teachingAssistant, String locationOnCampus, ArrayList<Day> daysInClass, int startTime, int endTime, int courseNumber, String courseDepartment, String prerequisites, int classTimeLength, Boolean isGraduateLevel) {
         this();
         this.enrollmentCapacity = enrollmentCapacity;
         this.enrollmentActual = enrollmentActual;
         this.teachingAssistant = teachingAssistant;
-        this.graduateCourse = graduateCourse;
+        this.isGraduateLevel = isGraduateLevel;
         this.prerequisites = prerequisites;
     }
 
@@ -143,11 +142,11 @@ public class Course extends AbstractEntity {
         this.classTimeLength = classTimeLength;
     }
 
-    public Boolean getGraduateCourse() {
-        return graduateCourse;
+    public Boolean getIsGraduateLevel() {
+        return isGraduateLevel;
     }
 
-    public void setGraduateCourse(Boolean graduateCourse) {
-        this.graduateCourse = graduateCourse;
+    public void setIsGraduateLevel(Boolean graduateCourse) {
+        this.isGraduateLevel = graduateCourse;
     }
 }
