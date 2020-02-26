@@ -25,6 +25,15 @@ public abstract class Teacher extends AbstractEntity {
     @JoinColumn
     private List<Course> coursesTeaching = new ArrayList<>();
 
+    public Teacher() {}
+
+    public Teacher(String name, int yearsInDepartment, DepartmentJob departmentJob, List<Course> coursesTeaching) {
+        this.setName(name);
+        this.yearsInDepartment = yearsInDepartment;
+        this.departmentJob = departmentJob;
+        this.coursesTeaching = coursesTeaching;
+    }
+
     public int getAge() {
         return age;
     }

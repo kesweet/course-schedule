@@ -28,14 +28,10 @@ public class FacultyMember extends Teacher {
 
 
     public FacultyMember(String name, Boolean canTeachGradLevel, FacultyType facultyType, DepartmentJob departmentJob, ArrayList<GraduateStudent> teachingAssistants, ArrayList<Course> coursesTeaching, int yearsInDepartment) {
-        super();
-        this.setName(name);
+        super(name, yearsInDepartment, departmentJob, coursesTeaching);
         this.canTeachGradLevel = canTeachGradLevel;
         this.facultyType = facultyType;
-        this.setDepartmentJob(departmentJob);
         this.teachingAssistants = teachingAssistants;
-        this.setCoursesTeaching(coursesTeaching);
-        this.setYearsInDepartment(yearsInDepartment);
         this.hierarchicalStatus = 0;
         this.setOtherDepartmentRoles("None");
     }

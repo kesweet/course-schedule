@@ -14,10 +14,9 @@ public class GraduateStudent extends Teacher {
 
     public GraduateStudent() {}
 
-    public void researcherNotTeacher() {
-        if (this.getDepartmentJob().getDisplayName().equals("Research Assistant")) {
-            this.setCoursesTeaching(new ArrayList<>());
-        }
+    public GraduateStudent(String name, int yearsInDepartment, DepartmentJob departmentJob, ArrayList<Course> coursesTeaching, ArrayList<Course> coursesTaking) {
+        super(name, yearsInDepartment, departmentJob, coursesTeaching);
+        this.coursesTaking = coursesTaking;
     }
 
 }

@@ -2,39 +2,61 @@ package com.katherinesweet.courseschedule.models;
 
 import javax.persistence.Entity;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
 public class Calendar extends AbstractEntity {
 
-    private ArrayList<Day> daysOfTheWeek;
+    private static List<Day> daysOfTheCalendarWeek;
 
-    private ArrayList<Integer> timesOfTheDay;
+    private static List<Integer> timesOfTheDay;
 
-    public ArrayList<Integer> buildTimeSlots(int startTime, int endTime) {
 
-        for (int i = startTime; i <= endTime; i+=5) {
+
+//    public Calendar () {
+//        this.daysOfTheCalendarWeek = this.createFullWeek();
+//        this.timesOfTheDay = this.buildTimeSlots(7, 9, 10);
+//    }
+//
+//
+//    public Calendar(List<Day> daysOfTheCalendarWeek, List<Integer> timesOfTheDay) {
+//        this.daysOfTheCalendarWeek = daysOfTheCalendarWeek;
+//        this.timesOfTheDay = timesOfTheDay;
+//    }
+
+
+
+    public static final List<Integer> buildTimeSlots(int startTime, int endTime, int increment) {
+
+        for (int i = startTime; i <= endTime; i+=increment) {
+            timesOfTheDay = new ArrayList<>();
             timesOfTheDay.add(startTime);
         }
         return timesOfTheDay;
     }
 
-    public ArrayList<Day> createFullWeek() {
-        daysOfTheWeek.add(Day.MONDAY);
-        daysOfTheWeek.add(Day.TUESDAY);
-        daysOfTheWeek.add(Day.WEDNESDAY);
-        daysOfTheWeek.add(Day.THURSDAY);
-        daysOfTheWeek.add(Day.FRIDAY);
-        daysOfTheWeek.add(Day.SATURDAY);
-        daysOfTheWeek.add(Day.SUNDAY);
-        return daysOfTheWeek;
+
+    public static final List<Day> createFullWeek() {
+        daysOfTheCalendarWeek = new ArrayList<>();
+        daysOfTheCalendarWeek.add(Day.MONDAY);
+        daysOfTheCalendarWeek.add(Day.TUESDAY);
+        daysOfTheCalendarWeek.add(Day.WEDNESDAY);
+        daysOfTheCalendarWeek.add(Day.THURSDAY);
+        daysOfTheCalendarWeek.add(Day.FRIDAY);
+        daysOfTheCalendarWeek.add(Day.SATURDAY);
+        daysOfTheCalendarWeek.add(Day.SUNDAY);
+        return daysOfTheCalendarWeek;
     }
 
-    public ArrayList<Day> createCustomWeek(Day[] days) {
+
+
+    public static final List<Day> createCustomWeek(Day[] days) {
         for (int i = 0; i < days.length; i++) {
-            daysOfTheWeek.add(days[i]);
+            daysOfTheCalendarWeek = new ArrayList<>();
+            daysOfTheCalendarWeek.add(days[i]);
         }
-        return daysOfTheWeek;
+        return daysOfTheCalendarWeek;
     }
 
 

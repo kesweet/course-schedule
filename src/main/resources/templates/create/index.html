@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+    <div class="navbar navbar-inverse navbar-fixed-middle">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a th:href="@{'/course'}">Create a Course</a></li>
+                    <li><a th:href="@{'/faculty'}">Create a Faculty Member</a></li>
+                    <li><a th:href="@{'/grad'}">Create a Graduate Student</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
