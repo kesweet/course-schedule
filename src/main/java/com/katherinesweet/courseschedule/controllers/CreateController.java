@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.GeneratedValue;
 
-@Controller("create")
+@Controller
+@RequestMapping("create")
 public class CreateController {
 
     @Autowired

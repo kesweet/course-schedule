@@ -1,3 +1,9 @@
+/*!
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
@@ -1402,9 +1408,9 @@ a.bg-danger:focus {
   background-color: #e4b9b9;
 }
 .page-header {
-  padding-bottom: 9px;
+  padding-bottom: 20px;
   margin: 40px 0 20px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 3px solid #eee;
 }
 ul,
 ol {
@@ -4004,7 +4010,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   height: 1px;
   margin: 9px 0;
   overflow: hidden;
-  background-color: #e5e5e5;
+  background-color: #dfdfe6;
 }
 .nav > li > a > img {
   max-width: none;
@@ -4583,7 +4589,7 @@ fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
 }
 .navbar-inverse {
-  background-color: #222;
+  background-color: #dfdfe6;
   border-color: #080808;
 }
 .navbar-inverse .navbar-brand {
@@ -6748,3 +6754,4 @@ button.close {
     display: none !important;
   }
 }
+/*# sourceMappingURL=bootstrap.css.map */
